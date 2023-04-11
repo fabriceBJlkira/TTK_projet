@@ -1,0 +1,71 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sec{
+    width: 50%;
+    margin-top: 2%;
+    height: 100vh;
+}
+.form1{
+    border: solid 3px rgba(0, 0, 0, 0.753);
+    padding: 3%;
+    position: fixed;
+    width: 50%;
+    left: 25%;
+}
+.avatar{
+    height: 200px;
+    width: 200px;
+}
+input[type=email], input[type=text], input[type=file], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.gd{
+    padding: 2%;
+}
+.haut{
+    position: fixed;
+    top: -60000px;
+}
+#customalert{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+#box{
+    border-radius: 5px;
+    margin-top: 100px;
+    margin-left: 400px;
+    height: 150px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 2px 2px 8px black;
+    background-color: white;
+}
+.heading{
+    background-color: #339966;
+    color: white;
+    font-size: large;
+    padding: 5px;
+}
+.content{
+    margin-top: 25px;
+    font-size: large;
+}
+#confirmbtn{
+    margin-left: 400px;
+}
+

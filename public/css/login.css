@@ -1,0 +1,122 @@
+/* Bordered form */
+form {
+    border: 3px solid #252424;
+  }
+  #customalert{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+#box{
+    border-radius: 5px;
+    margin-top: 100px;
+    margin-left: 400px;
+    height: 150px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 2px 2px 8px black;
+    background-color: white;
+}
+.heading{
+    background-color: #339966;
+    color: white;
+    font-size: large;
+    padding: 5px;
+}
+.content{
+    margin-top: 25px;
+    font-size: large;
+}
+button #confirmbtn{
+    margin-left: 400px;
+}
+
+.centre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+  /* Full-width inputs */
+  input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  /* Set a style for all buttons */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+
+  /* Center the avatar image inside this container */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+
+  /* Avatar image */
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+
+  /* The "Forgot password" text */
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  .inscrire{
+    text-decoration: underline;
+    color: green;
+    font-size: 18px;
+  }
+  .oublier{
+    text-decoration: underline;
+    color: red;
+    font-size: 18px;
+  }
+
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }
