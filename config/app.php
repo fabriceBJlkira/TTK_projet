@@ -9,6 +9,7 @@ return [
 
     'login' => 'Auth.login',
     'profil'=>'components.profile',
+    'profil1'=>'profil',
     'modifierprofile'=>'components.modifierprofile',
     'login1' => 'login',
     'register' => 'Auth.register',

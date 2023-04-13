@@ -26,7 +26,8 @@ class LoginRegisterRequest extends FormRequest
         return [
             'nom'=> 'required',
             'email'=> ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:8']
+            'password' => ['required', 'min:8', 'same:password_repeat'],
+            'password_repeat' => ['required', 'min:8'],
         ];
     }
 }

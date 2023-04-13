@@ -1,39 +1,25 @@
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
 }
-.sec{
-    width: 50%;
-    margin-top: 2%;
-    height: 100vh;
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
-.form1{
-    border: solid 3px rgba(0, 0, 0, 0.753);
-    padding: 3%;
-    position: fixed;
-    width: 50%;
-    left: 25%;
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
 }
-.avatar{
-    height: 200px;
-    width: 200px;
-}
-input[type=email], input[type=text], input[type=file], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-.gd{
-    padding: 2%;
-}
-.haut{
-    position: fixed;
-    top: -60000px;
-}
+
 #customalert{
     /* display: none; */
     position: fixed;
@@ -69,3 +55,37 @@ input[type=email], input[type=text], input[type=file], input[type=password] {
     margin-left: 400px;
 }
 
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+.sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -8,7 +8,7 @@
                     <img src="{{Storage::url('photoProfile/'.$item->avatar)}}" alt="John" class="img-fluid rounded-circle" style="width:40%; margin: 2% 2% 2% 5%;">
                 </div>
                 <h1>{{$item->name}}</h1>
-                <p class="title">{{$item->description}} hgvgfgf</p>
+                <p class="title">{{$item->description}}</p>
 
                 <h5 class="droite">Email : {{$item->email}}</h5>
                 <h5 class="droite">Type : {{$item->type}}</h5>

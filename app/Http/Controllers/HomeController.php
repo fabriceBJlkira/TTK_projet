@@ -63,7 +63,7 @@ class HomeController extends Controller
     {
         $request->validated();
         $this->userRepositories->modifusers($request);
-        dd('vita');
+        return redirect(config('app.profil1'));
     }
 
     // logout

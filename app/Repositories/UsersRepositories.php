@@ -16,12 +16,12 @@ class UsersRepositories
 
     public function modifusers($users)
     {
-        // dd($users->all());
+
         $profil= $this->userModels::where('id', session('LoggedUser'));
         $verif = $profil->get();
 
         if ($users->imgp!==null) {
-            // dd($users->file('imgp'));
+
             $filename =  time() . '.' . $users->imgp->extension();
 
             $users->file('imgp')->storeAs(
@@ -32,8 +32,6 @@ class UsersRepositories
         } else {
             $filename = $verif[0]->avatar;
         }
-
-
 
         if ($users->password === null AND $users->email === null) {
             $profil->update([
