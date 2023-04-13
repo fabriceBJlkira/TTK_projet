@@ -1,0 +1,83 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  /* a{
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  } */
+
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+  .img-box{
+    /* background-color: rgba(0, 0, 0, 0.87); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);;
+  }
+  .droite{
+    text-align: left;
+    margin-left: 4%;
+  }
+  .link{
+    text-decoration: underline;
+    color: black;
+  }
+  .row-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fileimg{
+    width: 50%;
+    text-align: center;
+    margin-top: 2%;
+    padding: 5px;
+    margin: 2%;
+  }
+  .bloc{
+    border: solid 3px rgba(128, 128, 128, 0.712);
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.356);
+  }
+  .datemembre p{
+    text-align: center;
+    margin-top: 3%;
+  }
+  .bloc-choix{
+    margin-top: 5%;
+  }
+  .bloc-choix .active{
+    color: black;
+    border-bottom: solid 4px rgb(0, 153, 255);
+  }
+  .bloc-choix a{
+    color: rgba(128, 128, 128, 0.671);
+    font-weight: bolder;
+    font-size: 17px;
+  }
+  .bloc-choix a:hover{
+    text-decoration: none;
+  }

@@ -8,6 +8,8 @@ return [
 
 
     'login' => 'Auth.login',
+    'profil'=>'components.profile',
+    'modifierprofile'=>'components.modifierprofile',
     'login1' => 'login',
     'register' => 'Auth.register',
     'joueur' => 'joueur',

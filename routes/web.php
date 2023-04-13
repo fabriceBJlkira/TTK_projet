@@ -29,5 +29,7 @@ Route::group(['middleware'=>['UserLoad']], function(){
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::get('/joueur', [HomeController::class, 'joueur'])->name('joueur');
 
-    Route::get('/profil', [HomeController::class, 'navbar']);
+    Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
+    Route::get('/profil/modification', [HomeController::class, 'modificationProfile'])->name('modificationProfile');
+    Route::post('/profil/modification/post', [HomeController::class, 'modificationProfilePost'])->name('modificationProfilepost');
 });

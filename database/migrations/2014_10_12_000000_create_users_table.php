@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->text('avatar')->nullable();
+            $table->string('avatar')->default('profil.png');
             $table->text('facebook')->nullable();
             $table->text('twiter')->nullable();
             $table->text('website')->nullable();

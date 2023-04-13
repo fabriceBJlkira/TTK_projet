@@ -43,9 +43,9 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'psw' => ['required', 'min:8']
         ]);
-        // dd($request->all());
+
         $userInfo = $this->loginRegisterRepository->loginUser($request);
-        // dd(!$userInfo);
+
         if (!$userInfo) {
             return back()->with('fail', 'L\'email n\'existe pas');
         } else {

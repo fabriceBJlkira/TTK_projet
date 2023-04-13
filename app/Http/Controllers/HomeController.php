@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfilModifRequest;
 use App\Models\User;
+use App\Repositories\UsersRepositories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    private $userRepositories;
+
+    public function __construct()
+    {
+        $this->userRepositories = new UsersRepositories();
+    }
+
     public function home(Request $request)
     {
         $userProfile = User::where('id', session('LoggedUser'))->get();
@@ -24,6 +34,7 @@ class HomeController extends Controller
     }
     public function joueur()
     {
+        // dd(Auth::user()->name);
         $userProfile = User::where('id', session('LoggedUser'))->get();
         return view(config('app.joueur'),[
             'users' => $userProfile
@@ -33,12 +44,26 @@ class HomeController extends Controller
     public function profil()
     {
         $userProfile = User::where('id', session('LoggedUser'))->get();
-        $modification = $userProfile;
         // dd($userProfile);
-        return view('Auth.navbar', [
+        return view(config('app.profil'), [
             'users'=>$userProfile,
-            'modification' => $modification
         ]);
+    }
+
+    public function modificationProfile()
+    {
+        $userProfile = User::where('id', session('LoggedUser'))->get();
+
+        return view(config('app.modifierprofile'), [
+            'users'=>$userProfile,
+        ]);
+    }
+
+    public function modificationProfilePost(ProfilModifRequest $request)
+    {
+        $request->validated();
+        $this->userRepositories->modifusers($request);
+        dd('vita');
     }
 
     // logout
