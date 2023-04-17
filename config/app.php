@@ -15,6 +15,7 @@ return [
     'register' => 'Auth.register',
     'joueur' => 'joueur',
     'home' => 'home',
+    'team'=> 'equipe',
 
     /*
     |--------------------------------------------------------------------------

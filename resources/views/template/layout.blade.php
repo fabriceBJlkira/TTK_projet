@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('webfonts/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('webfonts/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/createequipe.css')}}">
 
     <title>Document</title>
 </head>
 <body>
-    <header class="container-fluid">
+    <header class="container-fluid" style="padding: 2%;">
         @include('../Auth.navbar')
     </header>
     <main class="container-fluid" style="padding: 2%">

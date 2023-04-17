@@ -64,6 +64,15 @@ try {
 
     var eror = document.querySelectorAll('.eror');
 
+    try {
+        function hidealert(a) {
+            a.style.display = 'none';
+            window.location.pathname = ''
+        }
+    } catch (error) {
+
+    }
+
     window.addEventListener('load', ()=>{
         if (window.location.hash === '#gameInfo') {
             showgameInfo();

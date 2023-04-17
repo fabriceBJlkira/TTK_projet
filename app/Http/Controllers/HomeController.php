@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfilModifRequest;
+use App\Models\Team;
 use App\Models\User;
-use App\Repositories\UsersRepositories;
+use App\Models\TeamUser;
+use App\Models\TeamMembre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\EquipeRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\UsersRepositories;
+use App\Http\Requests\ProfilModifRequest;
 
 class HomeController extends Controller
 {
@@ -26,7 +31,7 @@ class HomeController extends Controller
                 return redirect('');
             }
         } else{
-            // dd($userProfile);
+
             return view(config('app.home'), [
                 'users'=>$userProfile
             ]);
@@ -41,6 +46,7 @@ class HomeController extends Controller
         ]);
     }
 
+    // profile
     public function profil()
     {
         $userProfile = User::where('id', session('LoggedUser'))->get();
@@ -49,7 +55,6 @@ class HomeController extends Controller
             'users'=>$userProfile,
         ]);
     }
-
     public function modificationProfile()
     {
         $userProfile = User::where('id', session('LoggedUser'))->get();
@@ -58,12 +63,37 @@ class HomeController extends Controller
             'users'=>$userProfile,
         ]);
     }
-
     public function modificationProfilePost(ProfilModifRequest $request)
     {
         $request->validated();
         $this->userRepositories->modifusers($request);
         return redirect(config('app.profil1'));
+    }
+
+    // team
+    public function teams($id)
+    {
+
+        $userProfile = User::where('id', session('LoggedUser'))->get();
+        $groupe = Team::findOrFail($id);
+        // dd($groupe);
+        return view(config('app.team'), [
+            'users' =>$userProfile,
+            'groupes' =>$groupe,
+        ]);
+    }
+    public function teamsCreate()
+    {
+        $userProfile = User::where('id', session('LoggedUser'))->get();
+        return view('components.createEquipe', [
+            'users' =>$userProfile,
+        ]);
+    }
+    public function teamCreatePost(EquipeRequest $request)
+    {
+        $request->validated();
+        $this->userRepositories->createEquipe($request);
+        return redirect('home#equipe')->with('cree', 'votre equipe est bien crée admin');
     }
 
     // logout

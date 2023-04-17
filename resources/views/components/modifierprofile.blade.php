@@ -13,9 +13,11 @@
                                     <div class="card" style="height: 100%">
                                         <h2>{{$item->name}}</h2>
                                         <div class="img-box" style="">
-                                            <img src="{{Storage::url('photoProfile/'.$item->avatar)}}" class="img-fluid rounded-circle" style="width: 250px;" alt="" id="imgc">
+                                            <div id="imgBox">
+                                                <img src="{{Storage::url('photoProfile/'.$item->avatar)}}" class="img-fluid rounded-circle" style="width: 250px;" alt="" id="imgc">
+                                            </div>
                                             <br>
-                                            <div class="row row-image">
+                                            <div class="row row-image" style=" width: 100%">
                                                 <input type="file" name="imgp" id="imgp" class="form-control fileimg bg-danger" accept=".jpg, .png">
                                             </div>
                                             <hr>

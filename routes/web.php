@@ -29,7 +29,13 @@ Route::group(['middleware'=>['UserLoad']], function(){
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::get('/joueur', [HomeController::class, 'joueur'])->name('joueur');
 
+    // profile et modif
     Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
     Route::get('/profil/modification', [HomeController::class, 'modificationProfile'])->name('modificationProfile');
     Route::post('/profil/modification/post', [HomeController::class, 'modificationProfilePost'])->name('modificationProfilepost');
+
+    // team et create team et modif team
+    Route::get('/team/{id}', [HomeController::class, 'teams'])->name(('team'));
+    Route::get('/Create/team', [HomeController::class, 'teamsCreate'])->name(('teamCreate'));
+    Route::post('team/create/post', [HomeController::class, 'teamCreatePost'])->name('teamCreatePost');
 });

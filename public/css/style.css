@@ -81,3 +81,41 @@
   .bloc-choix a:hover{
     text-decoration: none;
   }
+
+  #customalert{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+#box{
+    border-radius: 5px;
+    margin-top: 100px;
+    margin-left: 400px;
+    height: 150px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 2px 2px 8px black;
+    background-color: white;
+}
+#box .heading{
+    background-color: #339966;
+    color: white;
+    font-size: large;
+    padding: 5px;
+}
+#box .content{
+    margin-top: 25px;
+    font-size: large;
+}
+#box #confirmbtn{
+    margin-left: 400px;
+    width: inherit;
+    height: inherit;
+}
+

@@ -2,16 +2,22 @@
 
 namespace App\Repositories;
 
+use App\Models\Team;
+use App\Models\TeamUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UsersRepositories
 {
     private  User $userModels;
+    private Team $teamModels;
+    private TeamUser $teamMembreModels;
 
     public function __construct()
     {
         $this->userModels = new User;
+        $this->teamModels = new Team;
+        $this->teamMembreModels = new TeamUser;
     }
 
     public function modifusers($users)
@@ -58,5 +64,41 @@ class UsersRepositories
                 'password' =>Hash::make($users->password)
             ]);
         }
+    }
+
+    // creation de l'equipe
+    public function createEquipe($equipe)
+    {
+        $profil= $this->userModels::where('id', session('LoggedUser'));
+        $createurs = $profil->get();
+        $createur = $createurs[0]->id;
+
+        $filename =  time() . '.' . $equipe->logoteam->extension();
+
+        $equipe->file('logoteam')->storeAs(
+            'LogoTeam',
+            $filename,
+            'public'
+        );
+
+        $profil->update([
+            'type' => 'admin'
+        ]);
+
+        $this->teamModels::create([
+            'name' => $equipe->nom,
+            'logo' => $filename,
+            'user_id' => $createur,
+            'description' => $equipe->des
+        ]);
+        $admin =$this->teamModels::where('user_id', $createur)
+        ->orderby('id', 'desc')->first();
+        // dd($admin->id);
+
+        $this->teamMembreModels::create([
+            'user_id'=> $createurs[0]->id,
+            'team_id'=> $admin->id,
+            'statut' => 'actif'
+        ]);
     }
 }

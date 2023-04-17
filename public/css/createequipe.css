@@ -1,0 +1,20 @@
+.form-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formequipe{
+    border: solid 3px black;
+    width: 40%;
+    padding: 3%;
+    border-radius: 20px;
+}
+.createequipetitre{
+    margin-bottom: 4%;
+    text-align: center;
+    text-decoration: underline;
+    color: black;
+}
+.imageboxequipe{
+    text-align: center;
+}
