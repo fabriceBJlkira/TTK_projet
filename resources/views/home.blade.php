@@ -21,7 +21,7 @@
                     <div class="col-3">
                         <a href="{{route('teamCreate')}}" class="btn btn-primary">Crée votre groupe</a>
                     </div>
-                    <div class="col-3"><a href="#" class="btn btn-primary">Chercher ungroupe</a></div>
+                    <div class="col-3"><a href="{{route('rechercheTeam')}}" class="btn btn-primary">Chercher ungroupe</a></div>
                 </div>
                 <hr>
             </div>
@@ -41,7 +41,7 @@
                                     <div class="col">
                                         <a class="btn btn-success btn-block" href="{{route('team', ['id' => $groupe->id])}}" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-eye"></i> Visiter</a>
                                     </div>
-                                    @if ($item->type == 'admin' || $item->type == 'staf')
+                                    @if (($item->type == 'admin' || $item->type == 'staf') && ($groupe->user_id == $item->id) )
                                         <div class="col">
                                             <a class="btn btn-secondary btn-block" href="#revoir" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-ruler"></i> Administrer</a>
                                         </div>

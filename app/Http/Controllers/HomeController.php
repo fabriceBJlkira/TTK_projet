@@ -76,10 +76,12 @@ class HomeController extends Controller
 
         $userProfile = User::where('id', session('LoggedUser'))->get();
         $groupe = Team::findOrFail($id);
-        // dd($groupe);
+        $pivot = TeamUser::where('team_id', $groupe->id)->where('user_id', session('LoggedUser'))->first();
+        // dd($pivot);
         return view(config('app.team'), [
             'users' =>$userProfile,
             'groupes' =>$groupe,
+            'pivots' =>$pivot
         ]);
     }
     public function teamsCreate()
@@ -88,6 +90,23 @@ class HomeController extends Controller
         return view('components.createEquipe', [
             'users' =>$userProfile,
         ]);
+    }
+    public function rechercheTeam()
+    {
+        $userProfile = User::where('id', session('LoggedUser'))->get();
+        $team = Team::paginate(9);
+        $pivot = TeamUser::where('user_id', session('LoggedUser'))->get();
+        // dd($pivot);
+        return view('components.searchEquipe', [
+            'users' =>$userProfile,
+            'teams'=> $team,
+            'pivots'=> $pivot
+        ]);
+    }
+    public function adesion(Request $request)
+    {
+        $this->userRepositories->adesion($request);
+        return back();
     }
     public function teamCreatePost(EquipeRequest $request)
     {

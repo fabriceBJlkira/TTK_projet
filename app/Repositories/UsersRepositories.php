@@ -101,4 +101,13 @@ class UsersRepositories
             'statut' => 'actif'
         ]);
     }
+    public function adesion($users)
+    {
+        $userId = $this->userModels::where('id', session('LoggedUser'))->first();
+
+        $this->teamMembreModels::create([
+            'user_id'=> $userId->id,
+            'team_id' => $users->id
+        ]);
+    }
 }

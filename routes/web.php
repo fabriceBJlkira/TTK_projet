@@ -37,5 +37,7 @@ Route::group(['middleware'=>['UserLoad']], function(){
     // team et create team et modif team
     Route::get('/team/{id}', [HomeController::class, 'teams'])->name(('team'));
     Route::get('/Create/team', [HomeController::class, 'teamsCreate'])->name(('teamCreate'));
-    Route::post('team/create/post', [HomeController::class, 'teamCreatePost'])->name('teamCreatePost');
+    Route::post('/create/team/post', [HomeController::class, 'teamCreatePost'])->name('teamCreatePost');
+    Route::get('/find/team', [HomeController::class, 'rechercheTeam'])->name(('rechercheTeam'));
+    Route::post('/find/team/adesion', [HomeController::class, 'adesion'])->name('adesion');
 });
