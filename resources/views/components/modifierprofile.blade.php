@@ -74,6 +74,7 @@
                                                 <label for="mdp"><b>Encien Mot de passe</b></label>
                                                 <input type="password" class="form-control" name="mdp" placeholder="Encien Mot de passe" value="" disabled>
                                                 <span class="text-danger eror">@error('mdp'){{$message}}@enderror</span>
+                                                <span class="text-danger eror">@if(session()->has('fail')){{session()->get('fail')}}@endif</span>
                                             </div>
                                             <div class="form-group" id="Nmdp" style="text-align: left; display: none">
                                                 <label for="mdpC"><b>Nouveau Mot de passe</b></label>
@@ -109,16 +110,46 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <button type="submit" class="btn btn-danger">Modifier le profil</button>
+                                    </div>
+        </form>
+        <form action="{{route('modificationgameProfilepost')}}" method="POST">
                                 </div>
                                 <div id="gammeInfo" style="display: none">
                                     @if ($item->type !== 'gamer')
-                                    <p>En attente de table games pour le moment</p>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <h3>Liste des jeux disponibles</h3>
+                                            </div>
+                                            <div class="row" style="margin: 2% 0; text-align: left">
+                                                <label for=""><b>Jeux disponible</b></label>
+                                                <select name="jeux[]" id="select2game" multiple class="form-select" style="width: 100%; margin: 2% 0; text-align: left">
+                                                    @forelse ($games as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                        <option value="">Rien ici pour l'instant</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            @csrf
+                                            <div class="row" style="margin: 2% 0; text-align: left">
+                                                <label for=""><b>Ajouter dans quelle groupe ?</b></label>
+                                                <select name="team[]" id="select2groupe" multiple class="form-select" style="width: 100%; margin: 2% 0; text-align: left">
+                                                    @forelse ($groupes as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @empty
+                                                        <option value="">Rien ici pour l'instant</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        </div>
                                     @else
                                         <h1>Vous n'êtes pas un admin</h1>
                                     @endif
-                                </div>
-                                <div class="row">
-                                    <button type="submit" class="btn btn-danger">Modifier le profil</button>
+                                    <div class="row">
+                                        <button type="submit" class="btn btn-danger">Ajouter le jeux</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -128,3 +159,9 @@
         </form>
     </div>
 @endsection
+@push('scripts')
+    <script>
+            $('#select2game').select2();
+            $('#select2groupe').select2();
+    </script>
+@endpush

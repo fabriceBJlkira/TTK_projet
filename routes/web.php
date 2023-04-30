@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::group(['middleware'=>['UserLoad']], function(){
     Route::get('/profil', [HomeController::class, 'profil'])->name('profil');
     Route::get('/profil/modification', [HomeController::class, 'modificationProfile'])->name('modificationProfile');
     Route::post('/profil/modification/post', [HomeController::class, 'modificationProfilePost'])->name('modificationProfilepost');
+    Route::post('/profil/modificationgame/post', [HomeController::class, 'modificationgameProfilepost'])->name('modificationgameProfilepost');
+    Route::get('/find/profile/{id}', [HomeController::class, 'otherprofile'])->name(('other'));
+    Route::get('/find/profile/edit/{id}', [HomeController::class, 'editotherprofile'])->name(('editother'));
+    Route::post('/other/edit/post', [HomeController::class, 'posteditotherprofile'])->name(('posteditother'));
 
     // team et create team et modif team
     Route::get('/team/{id}', [HomeController::class, 'teams'])->name(('team'));
@@ -40,4 +45,11 @@ Route::group(['middleware'=>['UserLoad']], function(){
     Route::post('/create/team/post', [HomeController::class, 'teamCreatePost'])->name('teamCreatePost');
     Route::get('/find/team', [HomeController::class, 'rechercheTeam'])->name(('rechercheTeam'));
     Route::post('/find/team/adesion', [HomeController::class, 'adesion'])->name('adesion');
+    Route::post('/modif/team/name', [HomeController::class, 'modifteamname'])->name('modifteamname');
+    Route::post('/modif/team/description', [HomeController::class, 'modifteamdescription'])->name('modifteamdescription');
+    Route::post('/modif/team/image', [HomeController::class, 'modifteamimage'])->name('modifteamimage');
+
+    // demande d'adhesion dans le groupe
+    Route::post('/add/member', [HomeController::class, 'addmember'])->name('addmember');
+    Route::post('/delete/member', [HomeController::class, 'deletemembre'])->name('deletemembre');
 });

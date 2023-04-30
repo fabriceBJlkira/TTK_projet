@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('css/equipe.css')}}">
 @extends('template.layout')
 @section('content')
-    @foreach ($users as $user)
+    @forelse ($users as $user)
         @if ($pivots->statut !== 'en attente')
         <div class="row">
             <div class="sidenav">
@@ -21,5 +21,7 @@
         @else
             <h1>En attente de validation de l'admin</h1>
         @endif
-    @endforeach
+    @empty
+
+    @endforelse
 @endsection

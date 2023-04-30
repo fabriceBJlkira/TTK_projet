@@ -31,6 +31,14 @@ body {
     /* font-size: 15px; */
     padding: 0px 10px;
   }
+  .active{
+    color: white;
+    text-decoration: underline;
+  }
+  .active:hover{
+    color: white;
+    text-decoration: underline;
+  }
 
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}

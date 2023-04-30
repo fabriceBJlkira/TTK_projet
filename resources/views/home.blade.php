@@ -43,7 +43,7 @@
                                     </div>
                                     @if (($item->type == 'admin' || $item->type == 'staf') && ($groupe->user_id == $item->id) )
                                         <div class="col">
-                                            <a class="btn btn-secondary btn-block" href="#revoir" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-ruler"></i> Administrer</a>
+                                            <a class="btn btn-secondary btn-block" href="{{route('team', ['id' => $groupe->id])}}?option" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-ruler"></i> Administrer</a>
                                         </div>
                                     @endif
                                 </div>

@@ -32,8 +32,8 @@ class ProfilModifRequest extends FormRequest
         } else {
             return [
                 'nom' => 'required',
-                'email' => ['unique:users,email', 'same:emailC', 'required'],
-                'mdp' => ['required', 'min:8', 'same:mdpC'],
+                'email' => ['exists:users,email', 'required'],
+                'mdp' => ['required', 'min:8'],
                 'emailC' => 'required',
                 'mdpC' => 'required'
             ];

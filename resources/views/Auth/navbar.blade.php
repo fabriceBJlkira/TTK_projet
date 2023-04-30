@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: fixed; top: 0; width: 100%; z-index: 4;">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">Logo</a>
+  <a class="navbar-brand" href="{{route('home')}}">Logo</a>
 
   <div style="display: flex; align-items: center; justify-content: space-between; width: 90%">
       <!-- Lien dans la page -->

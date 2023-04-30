@@ -6,21 +6,25 @@ try {
 
 
 
-    function showuserInfo() {
-        userInfo.style.display = null;
-        userinfo.classList.add('active');
-        gammeInfo.style.display = 'none';
-        gameinfo.classList.remove('active');
-    }
-    function showgameInfo() {
-        userInfo.style.display = 'none';
-        userinfo.classList.remove('active');
-        gammeInfo.style.display = null;
-        gameinfo.classList.add('active');
-    }
+    try {
+        function showuserInfo() {
+            userInfo.style.display = null;
+            userinfo.classList.add('active');
+            gammeInfo.style.display = 'none';
+            gameinfo.classList.remove('active');
+        }
+        function showgameInfo() {
+            userInfo.style.display = 'none';
+            userinfo.classList.remove('active');
+            gammeInfo.style.display = null;
+            gameinfo.classList.add('active');
+        }
 
-    userinfo.addEventListener('click', showuserInfo);
-    gameinfo.addEventListener('click', showgameInfo);
+        userinfo.addEventListener('click', showuserInfo);
+        gameinfo.addEventListener('click', showgameInfo);
+    } catch (error) {
+
+    }
 
 
     // image
