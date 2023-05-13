@@ -13,13 +13,13 @@
             <div class="nav" style="position: fixed; background: black; height: 100%; right: 0;">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="{{route('team', ['id' => $groupes->id])}}?option&groupe" class="nav-link">Option du groupe</a>
+                        <a href="{{route('team', ['id' => $hash->encodeHex($groupes->id)])}}?option&groupe" class="nav-link">Option du groupe</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('team', ['id' => $groupes->id])}}?option&game" class="nav-link">Option de jeux</a>
+                        <a href="{{route('team', ['id' => $hash->encodeHex($groupes->id)])}}?option&game" class="nav-link">Option de jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('team', ['id' => $groupes->id])}}?option&addmembre" class="nav-link">Plus de membre</a>
+                        <a href="{{route('team', ['id' => $hash->encodeHex($groupes->id)])}}?option&addmembre" class="nav-link">Plus de membre</a>
                     </li>
                 </ul>
             </div>

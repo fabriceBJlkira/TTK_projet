@@ -25,4 +25,12 @@ class Team extends Model
         ->withPivot('statut')
         ->withTimestamps();
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Games::class)
+        ->using(UserGame::class)
+        ->withPivot('game_id')
+        ->withTimestamps();
+    }
 }

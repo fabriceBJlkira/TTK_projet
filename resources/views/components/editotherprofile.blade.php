@@ -109,7 +109,9 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <button type="submit" class="btn btn-danger">Modifier le profil</button>
+                                    {{-- @if () --}}
+                                        <button type="submit" class="btn btn-danger">Modifier le profil</button>
+                                    {{-- @endif --}}
                                 </div>
                             </div>
                         </div>

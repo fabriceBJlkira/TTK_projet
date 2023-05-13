@@ -62,6 +62,7 @@
             @empty
         @endforelse
         <div id="page" style="display: flex; align-items: center; justify-content: center; margin-top: 1%">
+            {{-- pagination --}}
             <p class="bg-dark">{{$teams->links()}}</p>
         </div>
         @endif

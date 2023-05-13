@@ -114,7 +114,7 @@
                                         <button type="submit" class="btn btn-danger">Modifier le profil</button>
                                     </div>
         </form>
-        <form action="{{route('modificationgameProfilepost')}}" method="POST">
+        <form action="{{route('modificationgameProfilepost', ['id' => $hash->encodeHex($item->id)])}}" method="POST">
                                 </div>
                                 <div id="gammeInfo" style="display: none">
                                     @if ($item->type !== 'gamer')
@@ -125,31 +125,33 @@
                                             <div class="row" style="margin: 2% 0; text-align: left">
                                                 <label for=""><b>Jeux disponible</b></label>
                                                 <select name="jeux[]" id="select2game" multiple class="form-select" style="width: 100%; margin: 2% 0; text-align: left">
-                                                    @forelse ($games as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @forelse ($games as $item1)
+                                                        <option value="{{$item1->id}}">{{$item1->name}}</option>
                                                     @empty
                                                         <option value="">Rien ici pour l'instant</option>
                                                     @endforelse
                                                 </select>
+                                                <span class="text-danger erors">@error('jeux'){{$message}}@enderror</span>
                                             </div>
                                             @csrf
                                             <div class="row" style="margin: 2% 0; text-align: left">
                                                 <label for=""><b>Ajouter dans quelle groupe ?</b></label>
                                                 <select name="team[]" id="select2groupe" multiple class="form-select" style="width: 100%; margin: 2% 0; text-align: left">
-                                                    @forelse ($groupes as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @forelse ($groupes as $item0)
+                                                        <option value="{{$item0->id}}">{{$item0->name}}</option>
                                                     @empty
                                                         <option value="">Rien ici pour l'instant</option>
                                                     @endforelse
                                                 </select>
+                                                <span class="text-danger erors">@error('team'){{$message}}@enderror</span>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <button type="submit" class="btn btn-danger">Ajouter le jeux</button>
                                         </div>
                                     @else
                                         <h1>Vous n'êtes pas un admin</h1>
                                     @endif
-                                    <div class="row">
-                                        <button type="submit" class="btn btn-danger">Ajouter le jeux</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>

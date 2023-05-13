@@ -26,6 +26,7 @@
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/scriptprofile.js')}}"></script>
     <script src="{{asset('js/equipe1.js')}}"></script>
+    <script src="{{asset('js/ajax.js')}}"></script>
     @stack('scripts')
 </body>
 </html>

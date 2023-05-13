@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('banner');
             $table->string('icone')->nullable();
+            $table->string('specifique');
             $table->timestamps();
         });
     }

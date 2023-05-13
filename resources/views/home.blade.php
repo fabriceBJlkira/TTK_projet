@@ -10,7 +10,32 @@
     </div>
     <div class="main">
         <div class="container-fluid" id="anonce">
-            <h1>En attente du table Annonce</h1>
+            <div class="row">
+                <div class="col-6">
+                    <h3>Liste des derniers annonces</h3>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                @forelse ($annonces as $annonce)
+                    <div class="row" style="margin: 3%; border: solid 4px black; padding: 2%;">
+                            <div class="col-3" style="">
+                                <a href="{{route('other', ['id' => $hash->encodeHex($annonce->user_id)])}}">
+                                <img src="{{Storage::url('photoProfile/'.$annonce->avatar)}}" class="img-fluid rounded-circle" style="height: 30%; border: solid 1px black" alt="">
+                                <h6>{{$annonce->name}}</h6>
+                            </a>
+                            <h6 class="text-danger">Groupe {{$annonce->teamename}}</h6>
+                            </div>
+                            <div class="col-8" style="">
+                                <p>
+                                    {{$annonce->contenue}}
+                                </p>
+                            </div>
+                    </div>
+                @empty
+                @endforelse
+                <p>{{$annonces->links()}}</p>
+            </div>
         </div>
         <div class="container-fluid" style="display: none" id="equipe">
             <div class="container" style="margin-bottom: 2%">
@@ -39,11 +64,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col">
-                                        <a class="btn btn-success btn-block" href="{{route('team', ['id' => $groupe->id])}}" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-eye"></i> Visiter</a>
+                                        <a class="btn btn-success btn-block" href="{{route('team', ['id' => $hash->encodeHex($groupe->id)])}}" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-eye"></i> Visiter</a>
                                     </div>
                                     @if (($item->type == 'admin' || $item->type == 'staf') && ($groupe->user_id == $item->id) )
                                         <div class="col">
-                                            <a class="btn btn-secondary btn-block" href="{{route('team', ['id' => $groupe->id])}}?option" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-ruler"></i> Administrer</a>
+                                            <a class="btn btn-secondary btn-block" href="{{route('team', ['id' => $hash->encodeHex($groupe->id)])}}?option" style="color: rgba(0, 0, 0, 0.747);"><i class="fas fa-ruler"></i> Administrer</a>
                                         </div>
                                     @endif
                                 </div>

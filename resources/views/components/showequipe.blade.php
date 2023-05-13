@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-10">
             <div class="row" id="membre">
-                <h3>Les membres actif dans {{$groupes->name}} en ce moment sont:</h3>
-                @foreach ($allmembre as $membres)
-                    @if ($membres->statut !== 'en attente')
+                <div class="row" style="margin-bottom: 2%">
+                    <h3>Les membres actif dans {{$groupes->name}} en ce moment sont:</h3>
+                    @foreach ($allmembre as $membres)
                         <div class="col-lg-6 col-md-6 col-sm-12" id="card">
                             <div class="card">
                                 <div class="img-box">
@@ -17,24 +17,24 @@
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col">
-                                            <a href="{{route('other', ['id' => $membres->id])}}" id='Voir' class="btn btn-outline-danger btn-block">Voir le profil</a>
+                                            <a href="{{route('other', ['id' => $hash->encodeHex($membres->id)])}}" id='Voir' class="btn btn-outline-danger btn-block">Voir le profil</a>
                                         </div>
-                                        @if ($user->type === 'admin' && $user->id === $groupes->user_id)
+                                        @if (($user->type === 'admin' && $user->id === $groupes->user_id) || ($pivots->statut === 'co-admin'))
                                             <div class="col">
-                                                <a id="Edits" href="{{route('editother', ['id' =>$membres->id])}}" class="btn btn-secondary btn-block">Editer le profile</a>
+                                                <a id="Edits" href="{{route('editother', ['id' =>$hash->encodeHex($membres->id)])}}" class="btn btn-secondary btn-block">Editer le profile</a>
                                             </div>
                                         @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endif
-                @endforeach
+                    @endforeach
+                </div>
+                <p>{{$allmembre->links()}}</p>
             </div>
             <div class="row" id="demande" style="display: none">
                 <h3>Les demande d'adhésion en attente dans {{$groupes->name}} en ce moment sont:</h3>
-                @foreach ($allmembre as $membres)
-                    @if ($membres->statut === 'en attente')
+                @foreach ($allMembreEnattente as $membres)
                         <div class="col-lg-6 col-md-6 col-sm-12" id="card">
                             <div class="card">
                                 <div class="img-box">
@@ -46,21 +46,17 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
-                                        @if ($user->type === 'admin' && $user->id === $groupes->user_id)
+                                        @if (($user->type === 'admin' && $user->id === $groupes->user_id) || ($pivots->statut === 'co-admin'))
                                             <div class="col">
-                                                <form action="{{route('addmember')}}" method="POST">
+                                                <form action="{{route('addmember', ['id' => $hash->encodeHex($membres->id), 'id1' => $hash->encodeHex($groupes->id)])}}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" value="{{$membres->id}}" name="id">
-                                                    <input type="hidden" name="groupid" value="{{$groupes->id}}">
-                                                    <button href="" class="btn btn-success btn-block">Valider</button>
+                                                    <button class="btn btn-success btn-block">Valider</button>
                                                 </form>
                                             </div>
                                             <div class="col">
-                                                <form action="{{route('deletemembre')}}" method="POST">
+                                                <form action="{{route('deletemembre', ['id' => $hash->encodeHex($membres->id), 'id1' => $hash->encodeHex($groupes->id)])}}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" value="{{$membres->id}}" name="id">
-                                                    <input type="hidden" name="groupid" value="{{$groupes->id}}">
-                                                    <button href="" class="btn btn-danger btn-block">Supprimer</button>
+                                                    <button class="btn btn-danger btn-block">Supprimer</button>
                                                 </form>
                                             </div>
                                         @endif
@@ -68,7 +64,6 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
                 @endforeach
             </div>
         </div>
@@ -78,7 +73,7 @@
                     <li class="nav-item">
                       <a class="nav-link active" href="#membre" id="Showmembre">Les membre actif</a>
                     </li>
-                    @if ($user->type === 'admin' && $user->id === $groupes->user_id)
+                    @if (($user->type === 'admin' && $user->id === $groupes->user_id) || ($pivots->statut === 'co-admin'))
                         <li class="nav-item">
                         <a class="nav-link" href="#demande" id="Showdemande">Demande d'adésion</a>
                         </li>

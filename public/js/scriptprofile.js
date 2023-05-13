@@ -3,7 +3,7 @@ try {
     var userinfo = document.getElementById('userinfo')
     var userInfo = document.getElementById('userInfo')
     var gammeInfo = document.getElementById('gammeInfo')
-
+    var filedgame = document.querySelectorAll('.erors')
 
 
     try {
@@ -66,6 +66,7 @@ try {
         }
     }
 
+
     var eror = document.querySelectorAll('.eror');
 
     try {
@@ -89,6 +90,11 @@ try {
             if (ereur.textContent !== '') {
                 check.checked =true
                 showemailpassword(Aemail, Nemail, Amdp, Nmdp);
+            }
+        });
+        filedgame.forEach((ereur) => {
+            if (ereur.textContent !== '') {
+                showgameInfo();
             }
         });
     })

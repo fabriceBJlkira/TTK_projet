@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Team;
 use App\Models\User;
-use App\Models\UserGame;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Games extends Model
+class Message extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'name',
-        'banner',
-        'icone',
-        'specifique'
+        'from_id',
+        'to_id',
+        'contenue',
+        'read_at'
     ];
 
+    public function from()
+    {
+        return $this->belongsTo(User::class, 'from_id');
+    }
 }

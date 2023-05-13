@@ -1,7 +1,6 @@
 @extends('../template.layout')
 @section('content')
     <div class="container">
-        <h2 style="text-align:center">Votre Profile</h2>
             <div class="card">
                 <div class="img-box">
                     <img src="{{Storage::url('photoProfile/'.$others->avatar)}}" alt="John" class="img-fluid rounded-circle" style="width:40%; margin: 2% 2% 2% 5%;">
@@ -28,7 +27,6 @@
                 @endif
                 <div style="margin: 24px 0;">
                 </div>
-                <p><a href="{{route('editother', ['id' =>$others->id])}}" class="btn btn-danger btn-block">Modifier son profil</a></p>
             </div>
 
     </div>
