@@ -185,7 +185,8 @@ class MessageController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:games,name',
-            'baner' => 'required'
+            'baner' => 'required',
+            'spesifique' => 'required'
         ]);
         // dd( $request->spesifique);
         $this->userRepositories->postgamefromdatabase($request);

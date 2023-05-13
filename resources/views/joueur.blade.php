@@ -32,7 +32,7 @@
                         <select name="parequipe" id="equipe" class="form-control">
                             <option value=""></option>
                             @forelse ($equipes as $equipe)
-                            <option {{$hash->decodeHex($_GET['parequipe'])==$equipe->id ? 'selected' : ''}} value="{{$hash->encodeHex($equipe->id)}}">{{$equipe->name}}</option>
+                            <option @if(isset($_GET['parequipe'])){{$hash->decodeHex($_GET['parequipe'])==$equipe->id ? 'selected' : ''}}@endif value="{{$hash->encodeHex($equipe->id)}}">{{$equipe->name}}</option>
                             @empty
                             pas d'equipe trouver
                             @endforelse
@@ -49,7 +49,7 @@
                         <select name="parejeux" id="jeux" class="form-control">
                             <option value=""></option>
                             @forelse ($jeux as $jeu)
-                                <option {{$hash->decodeHex($_GET['parejeux'])==$jeu->id ? 'selected' : ''}} value="{{$hash->encodeHex($jeu->id)}}">{{$jeu->name}}</option>
+                                <option @if(isset($_GET['parejeux'])){{$hash->decodeHex($_GET['parejeux'])==$jeu->id ? 'selected' : ''}}@endif value="{{$hash->encodeHex($jeu->id)}}">{{$jeu->name}}</option>
                             @empty
                                 pas de jeux trouver
                             @endforelse
